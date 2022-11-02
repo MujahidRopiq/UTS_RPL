@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2022 at 03:33 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Nov 02, 2022 at 03:50 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,8 +39,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `email`, `password`) VALUES
-(1, 'admin', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500'),
-(4, 'admin1', 'admin1@gmail.com', 'c93ccd78b2076528346216b3b2f701e6');
+(1, 'test', 'test@gmail.com', '098f6bcd4621d373cade4e832627b4f6'),
+(2, 'test1', 'test1@gmail.com', '098f6bcd4621d373cade4e832627b4f6');
 
 -- --------------------------------------------------------
 
@@ -50,6 +50,7 @@ INSERT INTO `admin` (`id`, `username`, `email`, `password`) VALUES
 
 CREATE TABLE `product` (
   `id_product` int(11) NOT NULL,
+  `id_admin` int(11) NOT NULL,
   `kode_product` int(11) NOT NULL,
   `tgl_input` date NOT NULL,
   `nama_product` varchar(100) NOT NULL,
@@ -62,16 +63,8 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id_product`, `kode_product`, `tgl_input`, `nama_product`, `harga`, `keterangan`, `foto`) VALUES
-(2, 1001, '2022-06-16', 'Kebab Turki', 30000, 'mantabbb banget ', '361-g-3.jpg'),
-(3, 1003, '2022-06-17', 'Burger', 30000, 'Burger', '718-g-1.jpg'),
-(4, 1003, '2022-06-17', 'Sandwich', 30000, 'Sandwich', '295-g-2.jpg'),
-(5, 1004, '2022-06-17', 'Choco magma', 30000, 'Choco magma', '598-g-8.jpg'),
-(6, 1005, '2022-06-17', 'Chicken Pop', 30000, 'Chicken Pop', '65-g-6.jpg'),
-(7, 1006, '2022-06-17', 'Cookies', 30000, 'Cookies', '249-g-4.jpg'),
-(8, 1007, '2022-06-17', 'Pie Susu', 30000, 'Pie Susu', '675-p-2.jpg'),
-(9, 1008, '2022-06-17', 'Telur Biasa Aja', 30000, 'Telur Biasa Aja', '35-g-7.jpg'),
-(10, 1010, '2022-06-17', 'tes', 120000, 'tes', '489-p-5.jpg');
+INSERT INTO `product` (`id_product`, `id_admin`, `kode_product`, `tgl_input`, `nama_product`, `harga`, `keterangan`, `foto`) VALUES
+(4, 10001, 1, '2022-11-02', 'Kebab Turki', 30000, 'adadsas', '258-g-1.jpg');
 
 --
 -- Indexes for dumped tables
@@ -87,7 +80,8 @@ ALTER TABLE `admin`
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`id_product`);
+  ADD PRIMARY KEY (`id_product`),
+  ADD KEY `id_admin` (`id_admin`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -97,13 +91,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
